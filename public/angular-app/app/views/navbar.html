@@ -1,0 +1,15 @@
+<div class="navbar" ng-controller="NavigationCtrl">
+  <span class="navbar-brand">TweetStream</span>
+  <ul class="nav navbar-nav navbar-right" ng-show="ifLoggedIn">
+    <li><button ng-click="logout()" class="btn btn-danger withripple">Logout</button></li>
+  </ul>
+</div>
+
+<div class="container" ng-controller="NavigationCtrl">
+  <div class="row">
+    <div class="alert alert-danger" role="alert" ng-show="message">
+      <button type="button" class="close" ng-click="hideAlert()">×</button>
+      {{message}}
+    </div>
+  </div>
+</div>
