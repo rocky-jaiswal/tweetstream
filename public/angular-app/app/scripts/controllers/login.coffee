@@ -1,6 +1,6 @@
 'use strict'
 
-LoginCtrl = ($scope, $auth, $location) ->
+LoginCtrl = ($scope, $rootScope, $auth, $location) ->
 
   $scope.submitRegistration = ->
     $auth.submitRegistration($scope.registrationForm)
@@ -23,5 +23,11 @@ LoginCtrl = ($scope, $auth, $location) ->
       .catch (resp)=>
         console.log resp
 
-LoginCtrl.$inject = ["$scope", "$auth", "$location"]
+  $rootScope.$on 'alerts:message', (event, message)=>
+    $scope.message = message.text
+
+  $scope.hideAlert = ()=>
+    $scope.message = null
+
+LoginCtrl.$inject = ["$scope", "$rootScope", "$auth", "$location"]
 angular.module("tweetStream").controller "LoginCtrl", LoginCtrl

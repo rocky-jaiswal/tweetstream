@@ -6,7 +6,7 @@ class UserService
     @loggedIn = status
 
   isLoggedIn:->
-    @loggedIn || localStorage.getItem("auth_headers")
+    @loggedIn
 
 angular.module("tweetStream").factory( "userService",
                                        ["$http", ($http) -> new UserService($http)]

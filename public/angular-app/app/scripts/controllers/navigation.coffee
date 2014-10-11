@@ -1,6 +1,6 @@
 'use strict'
 
-NavigationCtrl = ($scope, $location, $rootScope, webService, userService) ->
+NavigationCtrl = ($scope, $location, webService) ->
 
   success = (response) =>
     $location.url "/"
@@ -12,17 +12,5 @@ NavigationCtrl = ($scope, $location, $rootScope, webService, userService) ->
     promise = webService.logout()
     promise.then success, error
 
-  $scope.hideAlert = ()=>
-    $scope.message = null
-
-  $rootScope.$on 'auth:login-success', (event, user)=>
-    userService.setLoggedInStatus(true)
-    $scope.ifLoggedIn = true
-
-  $rootScope.$on 'alerts:message', (event, message)=>
-    $scope.message = message.text
-
-  $scope.ifLoggedIn = userService.isLoggedIn() && $location.url() isnt "/"
-
-NavigationCtrl.$inject = ["$scope", "$location", "$rootScope", "webService", "userService"]
+NavigationCtrl.$inject = ["$scope", "$location", "webService"]
 angular.module("tweetStream").controller "NavigationCtrl", NavigationCtrl
