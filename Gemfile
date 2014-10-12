@@ -6,6 +6,7 @@ gem 'devise_token_auth'
 gem 'figaro'
 gem 'omniauth-twitter'
 gem 'activerecord-session_store'
+gem 'twitter'
 gem 'puma'
 
 group :development, :test do

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       resources :greetings, only: :index
     end
   end
-  mount_devise_token_auth_for 'User', at: 'api/v1/auth'
+  mount_devise_token_auth_for 'User', at: 'api/v1/auth', controllers: {
+    omniauth_callbacks:  'overrides/omniauth_callbacks'
+  }
 
   # as :user do
   #  Define routes for User within this block.
