@@ -26,7 +26,7 @@ LoginCtrl = ($scope, $rootScope, $auth, $location) ->
   $rootScope.$on 'alerts:message', (event, message)=>
     $scope.message = message.text
 
-  $scope.hideAlert = ()=>
+  $scope.hideAlert = ()->
     $scope.message = null
 
 LoginCtrl.$inject = ["$scope", "$rootScope", "$auth", "$location"]
